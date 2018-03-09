@@ -3,6 +3,7 @@ import Header from "./Header"
 import Inventory from "./Inventory";
 import Order from "./Order";
 import Fish from "./Fish";
+import base from "../base";
 
 import sampleFishes from "../sample-fishes";
 
@@ -14,7 +15,24 @@ class App extends React.Component
 
     };
 
+    componentDidMount()
+    {
+        console.log("mounted");
+        const { params } = this.props.match;
+        this.ref = base.syncState(`${params.storeId}/fishes`,
+            {
+                context: this,
+                state: "fishes"
+            }
+        );
+    }
 
+    componentWillUnmount()
+    {
+        console.log("unmounted");
+        base.removeBinding(this.ref);
+
+    }
 
     addFish = (fish) =>
     {
