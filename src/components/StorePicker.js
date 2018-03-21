@@ -1,8 +1,14 @@
 import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+
 import { getFunName } from "../helpers";
 
 class StorePicker extends React.Component
 {
+    static propTypes = {
+        history: PropTypes.object
+    };
+
     myInput = React.createRef();
 
     // Need to do this as a prop so we get 'this' context as our own methods don't get bound
