@@ -9,7 +9,7 @@ class Order extends React.Component
     static propTypes = {
         fishes: PropTypes.object,
         order: PropTypes.object,
-        deleteFromOrder: PropTypes.object
+        deleteFromOrder: PropTypes.func
     };
 
     renderOrder = (key) =>
